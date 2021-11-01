@@ -22,12 +22,29 @@
 class Talker {
  public:
     ros::NodeHandle *nh;
+    /**
+     * @brief Construct a new Talker object
+     * 
+     * @param nh_ handle
+     */
     explicit Talker(ros::NodeHandle *nh_);
+    /**
+     * @brief Destroy the Talker object
+     * 
+     */
     ~Talker();
+    /**
+     * @brief Start the publisher
+     * 
+     */
     void startNode();
+
  private:
     std::string topic;
     ros::Publisher simple_publisher;
-    int rate;
+    /**
+     * @brief initialize the publisher
+     * 
+     */
     void init();
 };

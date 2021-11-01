@@ -22,12 +22,34 @@ class Listener {
  public:
     ros::NodeHandle *nh;
     ros::Subscriber subs;
+    /**
+     * @brief Construct a new Listener object
+     * 
+     * @param nh_  ROS handle
+     */
     explicit Listener(ros::NodeHandle *nh_);
+    /**
+     * @brief Destroy the Listener object
+     * 
+     */
     ~Listener();
+    /**
+     * @brief start the listener node
+     * 
+     */
     void startNode();
 
  private:
+    /**
+     * @brief initialize the listener
+     * 
+     */
     void init();
+    /**
+     * @brief Listener callback
+     * 
+     * @param msg - message from subscriber
+     */
     void listenerCallback(const std_msgs::String::ConstPtr& msg);
 };
 
