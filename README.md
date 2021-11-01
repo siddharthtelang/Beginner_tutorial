@@ -16,6 +16,7 @@ cd catkin_ws/src
 
 git clone https://github.com/siddharthtelang/beginner__tutorials.git
 
+cd ..
 catkin build
 
 source devel/setup.bash
@@ -25,7 +26,3 @@ rosrun beginner__tutorials talker_node
 rosrun beginner__tutorials listener_node
 
 ```
-
-# Results
-## Cppcheck and Cpplint
-### results/ folder
