@@ -9,6 +9,10 @@ A simple example of a ROS Publisher and Subscriber
 - src/ - source file as per Modern C++ format
 - results/ - cpplint and cppcheck outputs
 
+# Dependencies
+- ROS Melodic
+- CMake
+
 ### Steps to run:
 ```
 mkdir -p catkin_ws/src
