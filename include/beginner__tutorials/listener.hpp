@@ -54,6 +54,10 @@ class Listener {
      * @param msg - message from subscriber
      */
     void listenerCallback(const std_msgs::String::ConstPtr& msg);
+    /**
+     * @brief initialize the service Client
+     * 
+     */
     void initServiceClient();
 };
 

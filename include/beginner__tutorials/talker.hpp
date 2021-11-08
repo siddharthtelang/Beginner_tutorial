@@ -51,11 +51,24 @@ class Talker {
      * 
      */
     void init();
-
+    /**
+     * @brief Initialize the Service
+     * 
+     */
     void init_service();
-
+    /**
+     * @brief Initialize the parameters
+     * 
+     */
     void init_params();
-
+    /**
+     * @brief Service call functionality
+     * 
+     * @param req request from service
+     * @param res response from service
+     * @return true 
+     * @return false 
+     */
     bool modify(beginner__tutorials::modify_Message::Request &req,
                        beginner__tutorials::modify_Message::Response &res);
 };
