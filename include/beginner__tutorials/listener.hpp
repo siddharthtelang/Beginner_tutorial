@@ -17,6 +17,7 @@
 #include <std_msgs/String.h>
 #include <sstream>
 #include <string>
+#include "beginner__tutorials/modify_Message.h"
 
 class Listener {
  public:
@@ -40,6 +41,8 @@ class Listener {
     void startNode();
 
  private:
+    ros::ServiceClient client;
+    beginner__tutorials::modify_Message srv;
     /**
      * @brief initialize the listener
      * 
@@ -51,5 +54,6 @@ class Listener {
      * @param msg - message from subscriber
      */
     void listenerCallback(const std_msgs::String::ConstPtr& msg);
+    void initServiceClient();
 };
 
