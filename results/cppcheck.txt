@@ -9,8 +9,9 @@ Checking talker_main_node.cpp ...
 4/4 files checked 100% done
 
 
-siddharth@siddharth:~/ENPM808X/catk/src/beginner__tutorials/include/beginner__tutorials$ cppcheck *
+siddharth@siddharth:~/ENPM808X/catkin_ws/src/beginner__tutorials/include/beginner__tutorials$ cppcheck *
 Checking listener.hpp ...
-1/2 files checked 54% done
+1/2 files checked 45% done
 Checking talker.hpp ...
 2/2 files checked 100% done
+

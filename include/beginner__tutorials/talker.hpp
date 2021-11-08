@@ -69,6 +69,6 @@ class Talker {
      * @return true 
      * @return false 
      */
-    bool modify(beginner__tutorials::modify_Message::Request &req,
-                       beginner__tutorials::modify_Message::Response &res);
+    bool modify(beginner__tutorials::modify_Message::Request &req, // NOLINT
+                       beginner__tutorials::modify_Message::Response &res);  //NOLINT
 };
