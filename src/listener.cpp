@@ -22,10 +22,10 @@ Listener::~Listener() {
 }
 
 void Listener::listenerCallback(const std_msgs::String::ConstPtr& msg) {
-  ROS_INFO_STREAM("ROS LISTENER HEARD: [%s]" << msg->data.c_str());
+  ROS_INFO_STREAM("ROS LISTENER HEARD: " << msg->data.c_str());
   srv.request.str1 = msg->data;
   if (client.call(srv)) {
-    ROS_INFO_STREAM("something" << srv.response.str2);
+    ROS_INFO_STREAM("Received response from service - " << srv.response.str2);
   } else {
     ROS_ERROR_STREAM("Failed to call service");
   }

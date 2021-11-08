@@ -23,7 +23,7 @@ Talker::~Talker() {
 
 void Talker::init() {
   simple_publisher = nh->advertise<std_msgs::String>("talker", 1000);
-  rate = 10;
+  rate = 1;
 }
 
 void Talker::init_service() {
@@ -42,12 +42,13 @@ void Talker::startNode() {
   int count {};
   ros::Rate loop_rate(rate);
   if (rate != 10) {
-    ROS_WARN_STREAM("Loop rate has been modified from 10 Hz to" << rate <<"Hz");
+    ROS_WARN_STREAM("Loop rate has been modified from 10 Hz to"
+                    << rate <<" Hz");
   }
   while (ros::ok()) {
     std_msgs::String msg;
     std::stringstream ss;
-    ss << " HELLO FROM PUBLISHER " << count++;
+    ss << " Sending HELLO FROM PUBLISHER " << count++;
     msg.data = ss.str();
     ROS_INFO("%s", msg.data.c_str());
     simple_publisher.publish(msg);
