@@ -5,10 +5,25 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  std_srvs
+  message_generation
+)
+add_service_files( DIRECTORY srv
+  FILES
+  modify_Message.srv
+)
+generate_messages(
+  DEPENDENCIES
+  std_msgs
 )
 
 catkin_package(
  INCLUDE_DIRS include
+)
+catkin_package(
+  CATKIN_DEPENDS
+  message_runtime
+  std_srvs
 )
 
 include_directories(

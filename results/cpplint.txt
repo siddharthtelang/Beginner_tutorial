@@ -1,9 +1,11 @@
-siddharth@siddharth:~/ENPM808X/catk/src/beginner__tutorials/include/beginner__tutorials$ cpplint *
+siddharth@siddharth:~/ENPM808X/catkin_ws/src/beginner__tutorials/include/beginner__tutorials$ cpplint *
 Done processing listener.hpp
 Done processing talker.hpp
 
-siddharth@siddharth:~/ENPM808X/catk/src/beginner__tutorials/src$ cpplint *
+
+siddharth@siddharth:~/ENPM808X/catkin_ws/src/beginner__tutorials/src$ cpplint *
 Done processing listener.cpp
 Done processing listener_main_node.cpp
 Done processing talker.cpp
 Done processing talker_main_node.cpp
+
