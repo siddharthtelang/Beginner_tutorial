@@ -1,4 +1,5 @@
 #request
-string str
+string str1
 ---
-string str
+#response
+string str2
