@@ -14,6 +14,7 @@
 Talker::Talker(ros::NodeHandle *nh_) {
   nh = nh_;
   init();
+  init_service();
 }
 
 Talker::~Talker() {
@@ -22,6 +23,17 @@ Talker::~Talker() {
 
 void Talker::init() {
   simple_publisher = nh->advertise<std_msgs::String>("talker", 1000);
+}
+
+void Talker::init_service() {
+  service_name = "modify_Message";
+  server = nh->advertiseService(service_name, &Talker::modify, this);
+}
+
+bool Talker::modify(beginner__tutorials::modify_Message::Request &req,
+                   beginner__tutorials::modify_Message::Response &res) {
+  res.str2 = req.str1 + " - Subscriber Called Service Successfully";
+  return true;
 }
 
 void Talker::startNode() {
