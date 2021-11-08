@@ -7,7 +7,13 @@ A simple example of a ROS Publisher and Subscriber
 # Contents
 - include/ - header files
 - src/ - source file as per Modern C++ format
-- results/ - cpplint and cppcheck outputs
+- results/ - cpplint, cppcheck and rqt_console output
+
+# Parameters
+- publisher_rate: default = 10
+
+# Service
+- modify_Message: Modifies the message from the publisher and returns the new message
 
 ### Steps to run:
 ```
@@ -21,8 +27,10 @@ catkin build
 
 source devel/setup.bash
 
-roscore
-rosrun beginner__tutorials talker_node
-rosrun beginner__tutorials listener_node
+roslaunch beginner__tutorials pub_sub.launch publisher_rate:=1
 
+```
+# ROS Service from command line
+```
+rosservice call /modify_Message "str1: 'Hello'"
 ```
