@@ -54,6 +54,8 @@ class Talker {
 
     void init_service();
 
+    void init_params();
+
     bool modify(beginner__tutorials::modify_Message::Request &req,
                        beginner__tutorials::modify_Message::Response &res);
 };
