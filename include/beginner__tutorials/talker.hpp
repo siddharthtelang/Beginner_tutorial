@@ -45,6 +45,7 @@ class Talker {
     ros::Publisher simple_publisher;
     ros::ServiceServer server;
     std::string service_name;
+    int rate;
     /**
      * @brief initialize the publisher
      * 
