@@ -18,6 +18,7 @@
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "beginner__tutorials/modify_Message.h"
 
 class Talker {
  public:
@@ -42,9 +43,16 @@ class Talker {
  private:
     std::string topic;
     ros::Publisher simple_publisher;
+    ros::ServiceServer server;
+    std::string service_name;
     /**
      * @brief initialize the publisher
      * 
      */
     void init();
+
+    void init_service();
+
+    bool modify(beginner__tutorials::modify_Message::Request &req,
+                       beginner__tutorials::modify_Message::Response &res);
 };
