@@ -5,10 +5,9 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  std_srvs
   message_generation
 )
-add_service_files( DIRECTORY srv
+add_service_files(
   FILES
   modify_Message.srv
 )
@@ -23,7 +22,6 @@ catkin_package(
 catkin_package(
   CATKIN_DEPENDS
   message_runtime
-  std_srvs
 )
 
 include_directories(
@@ -41,3 +39,5 @@ target_link_libraries(talker_node
 target_link_libraries(listener_node
   ${catkin_LIBRARIES}
 )
+add_dependencies(talker_node beginner__tutorials_gencpp)
+add_dependencies(listener_node beginner__tutorials_gencpp)
