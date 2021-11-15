@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="publisher_rate" default="20" />
+    <arg name="parent_frame" default="/world" />
+    <arg name="child_frame" default="/talk" />
+    <arg name="x" default="2" />
+    <arg name="y" default="3" />
+    <arg name="z" default="1" />
+    <arg name="roll" default="3.14" />
+    <arg name="pitch" default="-3.14" />
+    <arg name="yaw" default="3.14" />
+
+    <group>
+         <node pkg="beginner__tutorials" type="talker_node" name="talker_node">
+            <param name="publisher_rate" value="$(arg publisher_rate)"/>
+            <param name="parent_frame_name" value="$(arg parent_frame)"/>
+            <param name="child_frame_name" value="$(arg child_frame)"/>
+            <param name="x" value="$(arg x)"/>
+            <param name="y" value="$(arg y)"/>
+            <param name="z" value="$(arg z)"/>
+            <param name="roll" value="$(arg roll)"/>
+            <param name="pitch" value="$(arg pitch)"/>
+            <param name="yaw" value="$(arg yaw)"/>
+        </node>
+        <test test-name="test_tf" pkg="beginner__tutorials" type="test_tf">
+            <rosparam param="broadcaster_name">talker_node</rosparam>
+        </test>
+
+    </group>
+
+
+</launch>
