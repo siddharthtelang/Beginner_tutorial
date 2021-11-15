@@ -50,6 +50,7 @@
   <!--   <doc_depend>doxygen</doc_depend> -->
   <depend>std_msgs</depend>
   <depend>std_srvs</depend>
+  <depend>tf</depend>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
