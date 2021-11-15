@@ -73,25 +73,6 @@ bool Talker::modify(beginner__tutorials::modify_Message::Request &req,
   return true;
 }
 
-// void Talker::broadcastTransform() {
-//   ROS_INFO_STREAM("Broadcasting transform for 6DOF");
-//   static tf2_ros::TransformBroadcaster br;
-//   geometry_msgs::TransformStamped transformStamped;
-//   transformStamped.header.stamp = ros::Time::now();
-//   transformStamped.header.frame_id = parent_frame;
-//   transformStamped.child_frame_id = child_frame;
-//   transformStamped.transform.translation.x = x;
-//   transformStamped.transform.translation.y = y;
-//   transformStamped.transform.translation.z = z;
-//   tf2::Quaternion q;
-//   q.setRPY(roll, pitch, yaw);
-//   transformStamped.transform.rotation.x = q.x();
-//   transformStamped.transform.rotation.y = q.y();
-//   transformStamped.transform.rotation.z = q.z();
-//   transformStamped.transform.rotation.w = q.w();
-//   br.sendTransform(transformStamped);
-// }
-
 void Talker::broadcastTransform() {
   ROS_INFO_STREAM("Broadcasting transform");
   static tf::TransformBroadcaster br;
