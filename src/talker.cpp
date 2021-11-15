@@ -55,7 +55,15 @@ void Talker::init_service() {
 }
 
 void Talker::init_params() {
-  nh->param<int>("/talker/publisher_rate", rate, 10);
+  nh->param<int>("/talker/publisher_rate", rate, 25);
+  nh->param<double>("/talker/x", x, 2.0);
+  nh->param<double>("/talker/y", y, 3.0);
+  nh->param<double>("/talker/z", z, 1.0);
+  nh->param<double>("/talker/roll", roll, 3.14);
+  nh->param<double>("/talker/pitch", pitch, -3.14);
+  nh->param<double>("/talker/yaw", yaw, 3.14);
+  nh->param<std::string>("/talker/parent_frame", parent_frame, "world");
+  nh->param<std::string>("/talker/child_frame", child_frame, "talk");
 }
 
 bool Talker::modify(beginner__tutorials::modify_Message::Request &req,
@@ -64,6 +72,19 @@ bool Talker::modify(beginner__tutorials::modify_Message::Request &req,
   res.str2 = req.str1 + " - Service Called Service Successfully";
   return true;
 }
+
+void Talker::broadcastTransform() {
+  ROS_INFO_STREAM("Broadcasting transform");
+  static tf::TransformBroadcaster br;
+  tf::Transform transform;
+  transform.setOrigin(tf::Vector3(x, y, z));
+  tf::Quaternion q;
+  q.setRPY(roll, pitch, yaw);
+  transform.setRotation(q);
+  br.sendTransform(tf::StampedTransform(transform,
+                   ros::Time::now(), parent_frame, child_frame));
+}
+
 
 void Talker::startNode() {
   ROS_DEBUG("Starting Talker node");
@@ -76,6 +97,7 @@ void Talker::startNode() {
   while (ros::ok()) {
     std_msgs::String msg;
     std::stringstream ss;
+    broadcastTransform();
     ss << " Sending HELLO FROM PUBLISHER " << count++;
     msg.data = ss.str();
     ROS_INFO("%s", msg.data.c_str());

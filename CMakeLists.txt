@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  tf
 )
 add_service_files(
   FILES
@@ -41,3 +42,9 @@ target_link_libraries(listener_node
 )
 add_dependencies(talker_node beginner__tutorials_gencpp)
 add_dependencies(listener_node beginner__tutorials_gencpp)
+
+if (CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(test_tf test/test_broadcaster.test test/tf_broadcaster_test.cpp)
+  target_link_libraries(test_tf ${catkin_LIBRARIES})
+endif()
