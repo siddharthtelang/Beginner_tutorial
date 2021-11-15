@@ -55,15 +55,15 @@ void Talker::init_service() {
 }
 
 void Talker::init_params() {
-  nh->param<int>("/talker/publisher_rate", rate, 1);
-  nh->param<double>("/talker/x", x, 8.0);
-  nh->param<double>("/talker/y", y, 7.0);
-  nh->param<double>("/talker/z", z, 0.0);
-  nh->param<double>("/talker/roll", roll, 0.0);
-  nh->param<double>("/talker/pitch", pitch, 0.0);
-  nh->param<double>("/talker/yaw", yaw, 0.0);
-  nh->param<std::string>("/talker/parent_frame", parent_frame, "/world");
-  nh->param<std::string>("/talker/child_frame", child_frame, "/talk");
+  nh->param<int>("/talker/publisher_rate", rate, 25);
+  nh->param<double>("/talker/x", x, 2.0);
+  nh->param<double>("/talker/y", y, 3.0);
+  nh->param<double>("/talker/z", z, 1.0);
+  nh->param<double>("/talker/roll", roll, 3.14);
+  nh->param<double>("/talker/pitch", pitch, -3.14);
+  nh->param<double>("/talker/yaw", yaw, 3.14);
+  nh->param<std::string>("/talker/parent_frame", parent_frame, "world");
+  nh->param<std::string>("/talker/child_frame", child_frame, "talk");
 }
 
 bool Talker::modify(beginner__tutorials::modify_Message::Request &req,
@@ -73,23 +73,35 @@ bool Talker::modify(beginner__tutorials::modify_Message::Request &req,
   return true;
 }
 
+// void Talker::broadcastTransform() {
+//   ROS_INFO_STREAM("Broadcasting transform for 6DOF");
+//   static tf2_ros::TransformBroadcaster br;
+//   geometry_msgs::TransformStamped transformStamped;
+//   transformStamped.header.stamp = ros::Time::now();
+//   transformStamped.header.frame_id = parent_frame;
+//   transformStamped.child_frame_id = child_frame;
+//   transformStamped.transform.translation.x = x;
+//   transformStamped.transform.translation.y = y;
+//   transformStamped.transform.translation.z = z;
+//   tf2::Quaternion q;
+//   q.setRPY(roll, pitch, yaw);
+//   transformStamped.transform.rotation.x = q.x();
+//   transformStamped.transform.rotation.y = q.y();
+//   transformStamped.transform.rotation.z = q.z();
+//   transformStamped.transform.rotation.w = q.w();
+//   br.sendTransform(transformStamped);
+// }
+
 void Talker::broadcastTransform() {
-  ROS_INFO_STREAM("Broadcasting transform for 6DOF");
-  static tf2_ros::TransformBroadcaster br;
-  geometry_msgs::TransformStamped transformStamped;
-  transformStamped.header.stamp = ros::Time::now();
-  transformStamped.header.frame_id = parent_frame;
-  transformStamped.child_frame_id = child_frame;
-  transformStamped.transform.translation.x = x;
-  transformStamped.transform.translation.y = y;
-  transformStamped.transform.translation.z = z;
-  tf2::Quaternion q;
+  ROS_INFO_STREAM("Broadcasting transform");
+  static tf::TransformBroadcaster br;
+  tf::Transform transform;
+  transform.setOrigin(tf::Vector3(x, y, z));
+  tf::Quaternion q;
   q.setRPY(roll, pitch, yaw);
-  transformStamped.transform.rotation.x = q.x();
-  transformStamped.transform.rotation.y = q.y();
-  transformStamped.transform.rotation.z = q.z();
-  transformStamped.transform.rotation.w = q.w();
-  br.sendTransform(transformStamped);
+  transform.setRotation(q);
+  br.sendTransform(tf::StampedTransform(transform,
+                   ros::Time::now(), parent_frame, child_frame));
 }
 
 

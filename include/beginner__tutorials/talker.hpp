@@ -35,10 +35,6 @@
 #define INCLUDE_BEGINNER__TUTORIALS_TALKER_HPP_
 #endif  // INCLUDE_BEGINNER__TUTORIALS_TALKER_HPP_
 
-
-#include <tf2_ros/transform_broadcaster.h>
-#include <geometry_msgs/TransformStamped.h>
-#include <tf2/LinearMath/Quaternion.h>
 #include <tf/transform_broadcaster.h>
 #include <string>
 #include <sstream>
