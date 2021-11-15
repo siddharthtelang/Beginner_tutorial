@@ -36,6 +36,10 @@
 #endif  // INCLUDE_BEGINNER__TUTORIALS_TALKER_HPP_
 
 
+#include <tf2_ros/transform_broadcaster.h>
+#include <geometry_msgs/TransformStamped.h>
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf/transform_broadcaster.h>
 #include <string>
 #include <sstream>
 #include "ros/ros.h"
@@ -66,7 +70,8 @@ class Talker {
     std::string topic;
     ros::Publisher simple_publisher;
     ros::ServiceServer server;
-    std::string service_name;
+    std::string service_name, parent_frame, child_frame;
+    double x, y, z, roll, pitch, yaw;
     int rate;
     /**
      * @brief initialize the publisher
@@ -93,4 +98,6 @@ class Talker {
      */
     bool modify(beginner__tutorials::modify_Message::Request &req, // NOLINT
                        beginner__tutorials::modify_Message::Response &res);  //NOLINT
+
+    void broadcastTransform();
 };
