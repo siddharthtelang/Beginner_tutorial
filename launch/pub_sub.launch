@@ -4,9 +4,9 @@
     <arg name="x" default="15"/>
     <arg name="y" default="30"/>
     <arg name="z" default="0"/>
-    <arg name="roll" default="3.14"/>
-    <arg name="pitch" default="-3.14"/>
-    <arg name="yaw" default="3.14"/>
+    <arg name="roll" default="2"/>
+    <arg name="pitch" default="3"/>
+    <arg name="yaw" default="4"/>
     <arg name="parent_frame" default="/world"/>
     <arg name="child_frame" default="/talk"/>
 
