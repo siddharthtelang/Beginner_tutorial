@@ -2,7 +2,7 @@
 ROS Beginner Tutorials
 
 # Publisher Subscriber
-A simple example of a ROS Publisher, Subscriber, Services, and Client
+A simple example of a ROS Publisher, Subscriber, Services, Client and Launch files
 
 # Contents
 - include/ - header files
